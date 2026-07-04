@@ -401,7 +401,7 @@ export default function LandingPage({
   
 
   return (
-    <div className="relative bg-[#0A1628] text-white min-h-screen flex flex-col font-sans selection:bg-[#C9A84C]/30 selection:text-[#C9A84C] overflow-hidden">
+    <div className="relative bg-[#0A1628] text-white min-h-screen flex flex-col font-sans selection:bg-[#C9A84C]/30 selection:text-[#C9A84C] overflow-x-hidden">
       
       {/* Cinematic ambient background */}
       <div className="fixed inset-0 z-0 pointer-events-none select-none overflow-hidden">
