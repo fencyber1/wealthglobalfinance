@@ -1,0 +1,6 @@
+{
+  "name": "America Finance Group",
+  "description": "Comprehensive banking and financial dashboard for America Finance Group with transfer capabilities, card management, real-time crypto analytics, and notifications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

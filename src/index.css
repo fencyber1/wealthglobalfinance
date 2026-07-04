@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --card: #0D1B2A;
+  --ring: #C9A84C;
+  --input: #1E2A3A;
+  --muted: #0F1D2E;
+  --accent: #132435;
+  --border: rgba(201, 168, 76, 0.15);
+  --radius: 1.4rem;
+  --chart-1: #C9A84C;
+  --chart-2: #4AC885;
+  --chart-3: #FD822B;
+  --chart-4: #5993F4;
+  --chart-5: #747474;
+  --popover: #0D1B2A;
+  --primary: #C9A84C;
+  --sidebar: #0A1628;
+  --spacing: 0.27rem;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --secondary: #1E2A3A;
+  --background: #0A1628;
+  --foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --shadow-blur: 3px;
+  --shadow-color: hsl(0 0% 0%);
+  --sidebar-ring: #C9A84C;
+  --shadow-spread: 0px;
+  --letter-spacing: -0.025em;
+  --shadow-opacity: 0.16;
+  --sidebar-accent: #1E2A3A;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --card-foreground: #FFFFFF;
+  --shadow-offset-x: 0px;
+  --shadow-offset-y: 2px;
+  --sidebar-primary: #C9A84C;
+  --muted-foreground: rgba(255, 255, 255, 0.5);
+  --accent-foreground: #C9A84C;
+  --popover-foreground: #FFFFFF;
+  --primary-foreground: #0A1628;
+  --sidebar-foreground: #FFFFFF;
+  --secondary-foreground: #FFFFFF;
+  --destructive-foreground: #FFFFFF;
+  --sidebar-accent-foreground: #C9A84C;
+  --sidebar-primary-foreground: #0A1628;
+
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-heavy: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+.dark {
+  --card: #0D1B2A;
+  --ring: #C9A84C;
+  --input: #1E2A3A;
+  --muted: #0F1D2E;
+  --accent: #132435;
+  --border: rgba(201, 168, 76, 0.15);
+  --radius: 1.4rem;
+  --chart-1: #C9A84C;
+  --chart-2: #4AC885;
+  --chart-3: #FD822B;
+  --chart-4: #5993F4;
+  --chart-5: #747474;
+  --popover: #0D1B2A;
+  --primary: #C9A84C;
+  --sidebar: #0A1628;
+  --spacing: 0.27rem;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --secondary: #1E2A3A;
+  --background: #0A1628;
+  --foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --shadow-blur: 3px;
+  --shadow-color: hsl(0 0% 0%);
+  --sidebar-ring: #C9A84C;
+  --shadow-spread: 0px;
+  --letter-spacing: -0.025em;
+  --shadow-opacity: 0.16;
+  --sidebar-accent: #1E2A3A;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --card-foreground: #FFFFFF;
+  --shadow-offset-x: 0px;
+  --shadow-offset-y: 2px;
+  --sidebar-primary: #C9A84C;
+  --muted-foreground: rgba(255, 255, 255, 0.5);
+  --accent-foreground: #C9A84C;
+  --popover-foreground: #FFFFFF;
+  --primary-foreground: #0A1628;
+  --sidebar-foreground: #FFFFFF;
+  --secondary-foreground: #FFFFFF;
+  --destructive-foreground: #FFFFFF;
+  --sidebar-accent-foreground: #C9A84C;
+  --sidebar-primary-foreground: #0A1628;
+
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-heavy: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --color-card: var(--card);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-radius: var(--radius);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-popover: var(--popover);
+  --color-primary: var(--primary);
+  --color-sidebar: var(--sidebar);
+  --color-spacing: var(--spacing);
+  --color-font-mono: var(--font-mono);
+  --color-font-sans: var(--font-sans);
+  --color-font-heading: var(--font-heading);
+  --color-secondary: var(--secondary);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-destructive: var(--destructive);
+  --color-shadow-blur: var(--shadow-blur);
+  --color-shadow-color: var(--shadow-color);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-shadow-spread: var(--shadow-spread);
+  --color-letter-spacing: var(--letter-spacing);
+  --color-shadow-opacity: var(--shadow-opacity);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-card-foreground: var(--card-foreground);
+  --color-shadow-offset-x: var(--shadow-offset-x);
+  --color-shadow-offset-y: var(--shadow-offset-y);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+}
+
+@utility perspective {
+  perspective: 1000px;
+}
+
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@utility backface-hidden {
+  backface-visibility: hidden;
+}
+
+@utility bg-striped {
+  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 2px, transparent 2px, transparent 10px);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.5);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.3) transparent;
+}
+
+/* Glassmorphism custom components using adaptive variables */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-panel-heavy {
+  background: var(--glass-bg-heavy);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gold-focus:focus {
+  outline: none;
+  border-color: #C9A84C !important;
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.2), 0 0 20px rgba(201, 168, 76, 0.1);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #C9A84C 0%, #DFC66A 50%, #C9A84C 100%);
+}
+.gold-gradient:hover {
+  background: linear-gradient(135deg, #D4B85A 0%, #E8D478 50%, #D4B85A 100%);
+}
+
+@keyframes gold-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.gold-shimmer {
+  background: linear-gradient(90deg, rgba(201,168,76,0) 0%, rgba(201,168,76,0.1) 50%, rgba(201,168,76,0) 100%);
+  background-size: 200% 100%;
+  animation: gold-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes gold-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(201,168,76,0.2); }
+  50% { box-shadow: 0 0 20px rgba(201,168,76,0.4); }
+}
+.gold-glow {
+  animation: gold-pulse 2s ease-in-out infinite;
+}
+
+@keyframes text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-shimmer {
+  background: linear-gradient(90deg, #C9A84C 0%, #FFFFFF 50%, #C9A84C 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.stagger-1 { animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.stagger-2 { animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+.stagger-3 { animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both; }
+.stagger-4 { animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+.stagger-5 { animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both; }
+.stagger-6 { animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+.float-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+.tactile-btn {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease;
+}
+.tactile-btn:active {
+  transform: scale(0.97);
+}
+
+.spring-transition {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-30px) translateX(20px); }
+  66% { transform: translateY(20px) translateX(-20px); }
+}
+
+/* Mobile-first responsive styles */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Prevent text size adjustment on orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  /* Smooth scrolling on iOS */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Safe area insets for notched devices */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Tablet breakpoint */
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .tactile-btn:active {
+    transform: scale(0.98);
+  }
+  
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .h-screen {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+/* High DPI screen optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img, svg {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
