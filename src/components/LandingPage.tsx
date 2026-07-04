@@ -401,7 +401,7 @@ export default function LandingPage({
   
 
   return (
-    <div className="relative bg-[#0A1628] text-white min-h-screen flex flex-col font-sans selection:bg-[#C9A84C]/30 selection:text-[#C9A84C] overflow-x-hidden">
+    <div className="relative bg-[#0A1628] text-white min-h-screen flex flex-col font-sans selection:bg-[#C9A84C]/30 selection:text-[#C9A84C]">
       
       {/* Cinematic ambient background */}
       <div className="fixed inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -1146,8 +1146,11 @@ export default function LandingPage({
       </RevealSection>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 px-6 md:px-12 bg-[#0A1628] border-b border-white/5">
-        <div className="max-w-4xl mx-auto space-y-12">
+      <div id="faq">
+      <RevealSection className="relative py-20 px-6 md:px-12 border-b border-white/5">
+        <div className="absolute inset-0 bg-[#0A1628]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(201,168,76,0.04)_0%,transparent_70%)]" />
+        <div className="relative z-10 max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-3">
             <span className="text-[10px] uppercase tracking-widest text-[#C9A84C] font-bold font-mono">Customer FAQs</span>
             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight font-heading">Got Questions? We Have Answers</h2>
@@ -1162,7 +1165,7 @@ export default function LandingPage({
               return (
                 <div 
                   key={index} 
-                  className="border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0A1628]/80"
+                  className="border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 bg-white/[0.03]"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : index)}
@@ -1195,7 +1198,8 @@ export default function LandingPage({
             })}
           </div>
         </div>
-      </section>
+      </RevealSection>
+      </div>
 
       {/* Financial News section */}
       <RevealSection className="py-20 px-6 md:px-12 border-b border-white/5">
