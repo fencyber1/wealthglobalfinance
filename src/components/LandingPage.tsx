@@ -420,17 +420,17 @@ export default function LandingPage({
         <SpiralAnimation />
       </div>
 
-      <div className="relative z-10 bg-gradient-to-r from-[#C9A84C]/10 via-[#C9A84C]/5 to-transparent border-b border-[#C9A84C]/10 text-[11px] text-gray-400 py-2 px-4 md:px-12 flex justify-between items-center">
-        <div className="flex items-center gap-6">
+      <div className="relative z-10 bg-gradient-to-r from-[#C9A84C]/10 via-[#C9A84C]/5 to-transparent border-b border-[#C9A84C]/10 text-[11px] text-gray-400 py-2 px-4 md:px-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-0">
+        <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
           <button 
             onClick={openSignIn}
             className="flex items-center gap-1.5 text-[#C9A84C] hover:text-white font-bold transition uppercase tracking-wider"
           >
             <Lock className="w-3.5 h-3.5" /> Online Access
           </button>
-          <span className="text-white/5">|</span>
-          <a href="mailto:support@wealthglobalfinance.com" className="flex items-center gap-1.5 hover:text-white transition">
-            <Mail className="w-3.5 h-3.5 text-[#C9A84C]" /> support@wealthglobalfinance.com
+          <span className="text-white/5 hidden sm:inline">|</span>
+          <a href="mailto:support@wealthglobalfinance.com" className="flex items-center gap-1.5 hover:text-white transition truncate">
+            <Mail className="w-3.5 h-3.5 text-[#C9A84C] shrink-0" /> <span className="truncate hidden sm:inline">support@wealthglobalfinance.com</span><span className="sm:hidden">Support</span>
           </a>
         </div>
         <div className="hidden md:flex items-center gap-6 font-semibold">
@@ -1274,7 +1274,7 @@ export default function LandingPage({
       <footer className="mt-auto py-8 px-4 md:px-8 pb-12" style={{ background: 'linear-gradient(180deg, transparent 0%, #e8e8e8 100%)' }}>
         <div className="max-w-[1100px] mx-auto rounded-[24px] overflow-hidden relative" style={{ boxShadow: '0 20px 60px -15px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05)' }}>
           {/* Footer Card */}
-          <div className="relative bg-[#09090b] p-10 md:p-14 overflow-hidden">
+          <div className="relative bg-[#09090b] p-6 sm:p-8 md:p-10 lg:p-14 overflow-hidden">
             {/* Subtle gradient overlays matching reference */}
             <div className="absolute top-0 left-1/4 w-96 h-48 bg-blue-600/8 blur-[80px] pointer-events-none" />
             <div className="absolute top-0 right-1/4 w-64 h-32 bg-purple-600/8 blur-[60px] pointer-events-none" />

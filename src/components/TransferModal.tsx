@@ -291,13 +291,13 @@ export default function TransferModal({
                 </form>
               ) : (
                 <form onSubmit={handleIntlSubmit} className="space-y-2.5">
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className={labelCls}>Beneficiary Name *</label>
                       <div className="relative">
                         <input type="text" required placeholder="Full name" value={intlName}
                           onChange={(e) => setIntlName(e.target.value)}
-                          className={`${inputCls} pr-5`}
+                          className={`${inputCls} pr-6`}
                         />
                         <User className="w-3 h-3 text-gray-600 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
@@ -307,19 +307,19 @@ export default function TransferModal({
                       <div className="relative">
                         <input type="text" required placeholder="IBAN or Acct" value={intlAccount}
                           onChange={(e) => setIntlAccount(e.target.value)}
-                          className={`${inputCls} font-mono pr-5`}
+                          className={`${inputCls} font-mono pr-6`}
                         />
                         <Landmark className="w-3 h-3 text-gray-600 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className={labelCls}>Bank Name *</label>
                       <div className="relative">
                         <input type="text" required placeholder="Receiving bank" value={intlBankName}
                           onChange={(e) => setIntlBankName(e.target.value)}
-                          className={`${inputCls} pr-5`}
+                          className={`${inputCls} pr-6`}
                         />
                         <Building2 className="w-3 h-3 text-gray-600 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
@@ -329,13 +329,13 @@ export default function TransferModal({
                       <div className="relative">
                         <input type="text" required placeholder="SWIFT code" value={intlSwift}
                           onChange={(e) => setIntlSwift(e.target.value)}
-                          className={`${inputCls} font-mono pr-5`}
+                          className={`${inputCls} font-mono pr-6`}
                         />
                         <Lock className="w-3 h-3 text-gray-600 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className={labelCls}>Country *</label>
                       <select value={intlCountry} onChange={(e) => setIntlCountry(e.target.value)}
@@ -351,7 +351,7 @@ export default function TransferModal({
                       <div className="relative">
                         <input type="text" placeholder="IBAN" value={intlIban}
                           onChange={(e) => setIntlIban(e.target.value)}
-                          className={`${inputCls} font-mono pr-5`}
+                          className={`${inputCls} font-mono pr-6`}
                         />
                         <Hash className="w-3 h-3 text-gray-600 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>

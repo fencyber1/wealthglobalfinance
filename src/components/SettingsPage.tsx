@@ -79,64 +79,103 @@ export default function SettingsPage({ onLogout }: SettingsPageProps) {
   const currentSession = React.useMemo(() => detectDevice(), []);
 
   return (
-    <div className="flex gap-6 h-[calc(100vh-8rem)]">
-      {/* Left sidebar navigation */}
-      <div className="w-64 shrink-0">
-        <div className="rounded-2xl bg-[#111318] border border-white/[0.06] overflow-hidden h-full flex flex-col">
-          <div className="px-5 pt-6 pb-4 flex items-center justify-between">
-            <Logo size={28} />
-            <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/[0.06] flex items-center justify-center cursor-pointer hover:bg-white/10 transition">
-              <X className="w-3.5 h-3.5 text-gray-500" />
-            </div>
-          </div>
-
-          <nav className="flex-1 px-3 py-2 space-y-0.5">
-            {settingsNav.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveTab(item.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer ${
-                    isActive
-                      ? 'bg-white/[0.07] text-white'
-                      : 'text-gray-500 hover:text-gray-300 hover:bg-white/[0.03]'
-                  }`}
-                >
-                  <Icon className="w-4 h-4 shrink-0" />
-                  <span className="flex-1 text-left">{item.label}</span>
-                  {item.badge !== undefined && (
-                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md ${
-                      isActive ? 'bg-white/10 text-white' : 'bg-white/5 text-gray-500'
-                    }`}>
-                      {item.badge}
-                    </span>
-                  )}
-                  {isActive && <ChevronRight className="w-3.5 h-3.5 text-gray-500" />}
-                </button>
-              );
-            })}
-          </nav>
-
-          <div className="px-3 py-3 border-t border-white/[0.04]">
-            <button onClick={onLogout} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-500 hover:text-red-400 hover:bg-red-500/5 transition-all cursor-pointer">
-              <LogOut className="w-4 h-4" />
-              <span>Log out</span>
-            </button>
-          </div>
+    <div className="flex flex-col gap-4 md:gap-6 min-h-0">
+      {/* Mobile horizontal tab bar */}
+      <div className="md:hidden overflow-x-auto no-scrollbar -mx-4 px-4">
+        <div className="flex gap-2 min-w-max pb-1">
+          {settingsNav.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
+                  isActive
+                    ? 'bg-white/[0.07] text-white border border-white/10'
+                    : 'text-gray-500 hover:text-gray-300 bg-white/[0.03] border border-white/[0.04]'
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5 shrink-0" />
+                <span>{item.label}</span>
+                {item.badge !== undefined && (
+                  <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md ${
+                    isActive ? 'bg-white/10 text-white' : 'bg-white/5 text-gray-500'
+                  }`}>
+                    {item.badge}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+          <button
+            onClick={onLogout}
+            className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium text-red-400 bg-red-500/5 border border-red-500/10 cursor-pointer whitespace-nowrap"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Log out</span>
+          </button>
         </div>
       </div>
 
-      {/* Right content panel */}
-      <div className="flex-1 min-w-0">
-        <div className="rounded-2xl bg-[#111318] border border-white/[0.06] h-full overflow-y-auto no-scrollbar">
+      <div className="flex gap-4 md:gap-6 flex-1 min-h-0 h-[calc(100dvh-8rem)] md:h-[calc(100vh-8rem)]">
+        {/* Left sidebar navigation - hidden on mobile */}
+        <div className="hidden md:block w-56 lg:w-64 shrink-0">
+          <div className="rounded-2xl bg-[#111318] border border-white/[0.06] overflow-hidden h-full flex flex-col">
+            <div className="px-4 lg:px-5 pt-5 lg:pt-6 pb-3 lg:pb-4 flex items-center justify-between">
+              <Logo size={28} />
+              <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/[0.06] flex items-center justify-center cursor-pointer hover:bg-white/10 transition">
+                <X className="w-3.5 h-3.5 text-gray-500" />
+              </div>
+            </div>
+
+            <nav className="flex-1 px-2.5 lg:px-3 py-2 space-y-0.5">
+              {settingsNav.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => setActiveTab(item.id)}
+                    className={`w-full flex items-center gap-2.5 lg:gap-3 px-2.5 lg:px-3 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+                      isActive
+                        ? 'bg-white/[0.07] text-white'
+                        : 'text-gray-500 hover:text-gray-300 hover:bg-white/[0.03]'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4 shrink-0" />
+                    <span className="flex-1 text-left">{item.label}</span>
+                    {item.badge !== undefined && (
+                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md ${
+                        isActive ? 'bg-white/10 text-white' : 'bg-white/5 text-gray-500'
+                      }`}>
+                        {item.badge}
+                      </span>
+                    )}
+                    {isActive && <ChevronRight className="w-3.5 h-3.5 text-gray-500" />}
+                  </button>
+                );
+              })}
+            </nav>
+
+            <div className="px-2.5 lg:px-3 py-3 border-t border-white/[0.04]">
+              <button onClick={onLogout} className="w-full flex items-center gap-2.5 lg:gap-3 px-2.5 lg:px-3 py-2.5 rounded-xl text-sm font-medium text-gray-500 hover:text-red-400 hover:bg-red-500/5 transition-all cursor-pointer">
+                <LogOut className="w-4 h-4" />
+                <span>Log out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right content panel */}
+        <div className="flex-1 min-w-0">
+          <div className="rounded-2xl bg-[#111318] border border-white/[0.06] h-full overflow-y-auto no-scrollbar">
 
           {/* Profile */}
           {activeTab === 'profile' && (
-            <div className="p-8 max-w-lg">
+            <div className="p-4 sm:p-6 md:p-8 max-w-lg">
               <h2 className="text-lg font-bold text-white mb-1">Profile</h2>
-              <p className="text-xs text-gray-500 mb-8">Manage your personal information and account details.</p>
+              <p className="text-xs text-gray-500 mb-6 md:mb-8">Manage your personal information and account details.</p>
               <div className="space-y-6">
                   <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#C9A84C]/30 to-[#C9A84C]/5 border border-[#C9A84C]/20 flex items-center justify-center">
@@ -168,9 +207,9 @@ export default function SettingsPage({ onLogout }: SettingsPageProps) {
 
           {/* Security */}
           {activeTab === 'security' && (
-            <div className="p-8 max-w-lg">
+            <div className="p-4 sm:p-6 md:p-8 max-w-lg">
               <h2 className="text-lg font-bold text-white mb-1">Security</h2>
-              <p className="text-xs text-gray-500 mb-8">Protect your account with enhanced security settings.</p>
+              <p className="text-xs text-gray-500 mb-6 md:mb-8">Protect your account with enhanced security settings.</p>
               <div className="space-y-5">
                 {[
                   { key: 'twoFactor' as const, title: 'Two-Factor Authentication', desc: 'Add an extra layer of security to your account' },
@@ -206,9 +245,9 @@ export default function SettingsPage({ onLogout }: SettingsPageProps) {
 
           {/* Notifications */}
           {activeTab === 'notifications' && (
-            <div className="p-8 max-w-lg">
+            <div className="p-4 sm:p-6 md:p-8 max-w-lg">
               <h2 className="text-lg font-bold text-white mb-1">Notifications</h2>
-              <p className="text-xs text-gray-500 mb-8">Choose how and when you want to be notified.</p>
+              <p className="text-xs text-gray-500 mb-6 md:mb-8">Choose how and when you want to be notified.</p>
               <div className="space-y-5">
                 {[
                   { key: 'emailAlerts' as const, title: 'Email Alerts', desc: 'Transaction and account alerts via email' },
@@ -235,9 +274,9 @@ export default function SettingsPage({ onLogout }: SettingsPageProps) {
 
           {/* Appearance */}
           {activeTab === 'appearance' && (
-            <div className="p-8 max-w-lg">
+            <div className="p-4 sm:p-6 md:p-8 max-w-lg">
               <h2 className="text-lg font-bold text-white mb-1">Appearance</h2>
-              <p className="text-xs text-gray-500 mb-8">Customize the look and feel of your dashboard.</p>
+              <p className="text-xs text-gray-500 mb-6 md:mb-8">Customize the look and feel of your dashboard.</p>
               <div className="space-y-6">
                 <div>
                   <label className="block text-[11px] font-medium text-gray-400 mb-3">Theme</label>
@@ -342,9 +381,9 @@ export default function SettingsPage({ onLogout }: SettingsPageProps) {
 
           {/* Sessions */}
           {activeTab === 'sessions' && (
-            <div className="p-8 max-w-lg">
+            <div className="p-4 sm:p-6 md:p-8 max-w-lg">
               <h2 className="text-lg font-bold text-white mb-1">Sessions</h2>
-              <p className="text-xs text-gray-500 mb-8">View and manage active sessions across your devices.</p>
+              <p className="text-xs text-gray-500 mb-6 md:mb-8">View and manage active sessions across your devices.</p>
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
                   <div className="flex items-center gap-3">
@@ -364,6 +403,7 @@ export default function SettingsPage({ onLogout }: SettingsPageProps) {
             </div>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

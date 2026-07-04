@@ -35,7 +35,7 @@ export default function RestrictionModal({ isOpen, onClose, referenceCode = 'WGF
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 pointer-events-none" role="alertdialog" aria-modal="true" aria-labelledby="restriction-title">
       <div className="relative w-full max-w-sm p-[1px] rounded-2xl bg-gradient-to-b from-red-500/40 to-red-500/5 overflow-hidden shadow-2xl pointer-events-auto" onClick={(e) => e.stopPropagation()}>
-        <div className="rounded-[calc(1.4rem-1px)] p-6 bg-[#0A1628]/95 backdrop-blur-2xl">
+        <div className="rounded-[calc(1.4rem-1px)] p-4 sm:p-6 bg-[#0A1628]/95 backdrop-blur-2xl">
           <div className="flex flex-col items-center text-center">
             {/* Icon */}
             <div className="w-14 h-14 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-4">

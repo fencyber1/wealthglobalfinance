@@ -13,11 +13,11 @@ export default function RightSidebar({ availableBalance, spentBalance, totalBala
   const offset = circumference - (percentage / 100) * circumference;
 
   return (
-    <aside className="w-80 bg-[#111827]/80 backdrop-blur-xl border-l border-white/5 p-6 hidden lg:flex flex-col items-center gap-6">
+    <aside className="w-full bg-[#111827]/80 backdrop-blur-xl border-l border-white/5 p-4 lg:p-6 hidden xl:flex flex-col items-center gap-4 lg:gap-6 overflow-y-auto no-scrollbar">
       {/* Progress Ring Card */}
       <div className="p-[1px] rounded-2xl bg-gradient-to-b from-[#a855f7]/20 to-[#a855f7]/5 overflow-hidden border border-[#a855f7]/20 w-full">
         <div className="rounded-[calc(1.4rem-1px)] p-6 bg-[#0A1628] flex flex-col items-center">
-          <div className="relative w-36 h-36 mb-3">
+          <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 mb-3">
             <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="10" />
               <circle
@@ -37,7 +37,7 @@ export default function RightSidebar({ availableBalance, spentBalance, totalBala
               </defs>
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-3xl font-bold text-white">{percentage}%</span>
+              <span className="text-2xl lg:text-3xl font-bold text-white">{percentage}%</span>
               <span className="text-[10px] text-gray-400 mt-0.5">Spent balance</span>
             </div>
           </div>

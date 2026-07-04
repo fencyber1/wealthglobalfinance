@@ -24,9 +24,9 @@ export default function TopNav({ activePeriod, onPeriodChange, notificationCount
             <Menu className="w-5 h-5" />
           </button>
         )}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 min-w-0">
           <Logo size={28} />
-          <h1 className="text-base md:text-lg font-bold text-white tracking-tight">WealthGlobalFinance</h1>
+          <h1 className="text-sm md:text-lg font-bold text-white tracking-tight hidden sm:block truncate">WealthGlobalFinance</h1>
         </div>
         <div className="flex bg-white/[0.06] rounded-full p-1 border border-white/5 overflow-x-auto no-scrollbar">
           {periods.map((p) => (

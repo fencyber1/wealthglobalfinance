@@ -345,7 +345,7 @@ export default function App() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 flex">
           <div className="fixed inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
-          <div className="relative w-72 bg-[#0e1619] h-full flex flex-col p-6 border-r border-white/10 z-50 animate-slide-in">
+          <div className="relative w-[85vw] max-w-72 bg-[#0e1619] h-full flex flex-col p-4 sm:p-6 border-r border-white/10 z-50 animate-slide-in">
             <button 
               onClick={() => setMobileMenuOpen(false)}
               className="absolute top-4 right-4 p-2 text-white/50 hover:text-white"
@@ -497,7 +497,7 @@ export default function App() {
               </div>
 
               {/* Right Sidebar - Desktop */}
-              <div className="hidden lg:block">
+              <div className="hidden xl:block shrink-0 w-72 2xl:w-80">
                 <RightSidebar 
                   availableBalance={5248150}
                   spentBalance={3568742}
@@ -513,14 +513,14 @@ export default function App() {
               </div>
 
               {/* Mobile Balance Summary */}
-              <div className="lg:hidden p-[1px] rounded-2xl bg-gradient-to-b from-[#a855f7]/20 to-[#a855f7]/5 overflow-hidden border border-[#a855f7]/20">
-                <div className="rounded-[calc(1.4rem-1px)] p-4 bg-[#0A1628]">
-                  <div className="flex items-center justify-between mb-3">
-                    <div>
-                      <p className="text-2xl font-bold text-white font-mono">$5,248,150.00</p>
+              <div className="xl:hidden p-[1px] rounded-2xl bg-gradient-to-b from-[#a855f7]/20 to-[#a855f7]/5 overflow-hidden border border-[#a855f7]/20">
+                <div className="rounded-[calc(1.4rem-1px)] p-3 sm:p-4 bg-[#0A1628]">
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <div className="min-w-0">
+                      <p className="text-xl sm:text-2xl font-bold text-white font-mono truncate">$5,248,150.00</p>
                       <p className="text-[11px] text-gray-400">Available balance</p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right shrink-0">
                       <p className="text-sm font-semibold text-[#C9A84C]">40%</p>
                       <p className="text-[10px] text-gray-500">Spent</p>
                     </div>
@@ -591,27 +591,29 @@ export default function App() {
                                   </div>
 
                                   {/* Content */}
-                                  <div className="flex-1 min-w-0 grid grid-cols-2 md:grid-cols-5 gap-3 items-center">
-                                    <div>
-                                      <p className="text-sm font-bold text-white">{t.accName}</p>
-                                      <p className="text-[10px] text-gray-500">{t.description}</p>
-                                    </div>
-                                    <div className="font-mono text-gray-400 text-xs">
-                                      {t.accountNumber}
-                                      {activeTransferTab === 'local' && <span className="block text-[10px]">Rt: {t.routingNumber || 'N/A'}</span>}
-                                      {activeTransferTab === 'international' && <span className="block text-[10px] text-[#C9A84C]">SWIFT: {t.bankSwiftCode || 'N/A'}</span>}
-                                    </div>
-                                    <div className="text-xs text-gray-400 font-mono">{t.date}</div>
-                                    <div className="text-sm font-mono font-bold text-white text-right">
-                                      ${t.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                                    </div>
-                                    <div className="text-right">
-                                      <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1 ${sc.bg} ${sc.text} border ${sc.border}`}>
-                                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                          <path strokeLinecap="round" strokeLinejoin="round" d={sc.icon} />
-                                        </svg>
-                                        {t.status}
-                                      </span>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 sm:gap-3 items-start sm:items-center">
+                                      <div>
+                                        <p className="text-sm font-bold text-white">{t.accName}</p>
+                                        <p className="text-[10px] text-gray-500">{t.description}</p>
+                                      </div>
+                                      <div className="font-mono text-gray-400 text-xs">
+                                        {t.accountNumber}
+                                        {activeTransferTab === 'local' && <span className="block text-[10px]">Rt: {t.routingNumber || 'N/A'}</span>}
+                                        {activeTransferTab === 'international' && <span className="block text-[10px] text-[#C9A84C]">SWIFT: {t.bankSwiftCode || 'N/A'}</span>}
+                                      </div>
+                                      <div className="text-xs text-gray-400 font-mono">{t.date}</div>
+                                      <div className="text-sm font-mono font-bold text-white sm:text-right">
+                                        ${t.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                                      </div>
+                                      <div className="sm:text-right">
+                                        <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1 ${sc.bg} ${sc.text} border ${sc.border} shrink-0`}>
+                                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d={sc.icon} />
+                                          </svg>
+                                          {t.status}
+                                        </span>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -638,9 +640,9 @@ export default function App() {
                       <h3 className="text-base font-bold text-white uppercase tracking-wider">Assets Balance</h3>
                       <p className="text-xs text-gray-400">Conversion rates, balances, and purchase capability.</p>
                     </div>
-                    <div className="bg-black/30 border border-white/5 p-4 rounded-xl font-mono text-right shrink-0">
+                    <div className="bg-black/30 border border-white/5 p-3 sm:p-4 rounded-xl font-mono text-right shrink-0 min-w-0">
                       <span className="text-[10px] text-gray-500 uppercase block mb-1">Total Portfolio</span>
-                      <span className="text-xl font-bold text-[#C9A84C]">
+                      <span className="text-base sm:text-lg md:text-xl font-bold text-[#C9A84C] whitespace-nowrap">
                         ${totalCryptoUSD.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                       </span>
                     </div>
@@ -668,18 +670,18 @@ export default function App() {
                               </span>
                             </div>
 
-                            <div className="grid grid-cols-3 gap-3 my-4 py-4 border-t border-b border-white/5">
+                            <div className="grid grid-cols-3 gap-2 sm:gap-3 my-4 py-4 border-t border-b border-white/5">
                               <div>
-                                <span className="text-[9px] text-gray-500 uppercase font-medium">Buy Price</span>
-                                <p className="text-xs font-mono font-bold text-emerald-400">${priceInfo.buyPrice?.toLocaleString(undefined, { minimumFractionDigits: 2 }) || '—'}</p>
+                                <span className="text-[8px] sm:text-[9px] text-gray-500 uppercase font-medium">Buy Price</span>
+                                <p className="text-[10px] sm:text-xs font-mono font-bold text-emerald-400">${priceInfo.buyPrice?.toLocaleString(undefined, { minimumFractionDigits: 2 }) || '—'}</p>
                               </div>
                               <div className="text-center">
-                                <span className="text-[9px] text-gray-500 uppercase font-medium">Spread</span>
-                                <p className="text-xs font-mono font-bold text-[#C9A84C]">{priceInfo.spreadPct?.toFixed(2) || '—'}%</p>
+                                <span className="text-[8px] sm:text-[9px] text-gray-500 uppercase font-medium">Spread</span>
+                                <p className="text-[10px] sm:text-xs font-mono font-bold text-[#C9A84C]">{priceInfo.spreadPct?.toFixed(2) || '—'}%</p>
                               </div>
                               <div className="text-right">
-                                <span className="text-[9px] text-gray-500 uppercase font-medium">Sell Price</span>
-                                <p className="text-xs font-mono font-bold text-red-400">${priceInfo.sellPrice?.toLocaleString(undefined, { minimumFractionDigits: 2 }) || '—'}</p>
+                                <span className="text-[8px] sm:text-[9px] text-gray-500 uppercase font-medium">Sell Price</span>
+                                <p className="text-[10px] sm:text-xs font-mono font-bold text-red-400">${priceInfo.sellPrice?.toLocaleString(undefined, { minimumFractionDigits: 2 }) || '—'}</p>
                               </div>
                             </div>
 
@@ -697,13 +699,13 @@ export default function App() {
                             <div className="flex gap-3">
                               <button
                                 onClick={() => { setSelectedCoin(coin.id); setCryptoModalMode('buy'); setCryptoModalOpen(true); }}
-                                className="flex-1 py-2 gold-gradient text-[#0A1628] text-xs font-bold rounded-xl tactile-btn shadow-lg shadow-[#C9A84C]/20"
+                                className="flex-1 py-2.5 min-h-[44px] gold-gradient text-[#0A1628] text-xs font-bold rounded-xl tactile-btn shadow-lg shadow-[#C9A84C]/20"
                               >
                                 Buy {coin.symbol}
                               </button>
                               <button
                                 onClick={() => { setSelectedCoin(coin.id); setCryptoModalMode('receive'); setCryptoModalOpen(true); }}
-                                className="flex-1 py-2 bg-white/5 border border-white/10 text-white text-xs font-semibold rounded-xl tactile-btn hover:bg-white/10"
+                                className="flex-1 py-2.5 min-h-[44px] bg-white/5 border border-white/10 text-white text-xs font-semibold rounded-xl tactile-btn hover:bg-white/10"
                               >
                                 Receive
                               </button>
@@ -723,13 +725,13 @@ export default function App() {
             <div className="space-y-8">
               
               <div className="p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] overflow-hidden">
-                <div className="rounded-[calc(1.4rem-1px)] p-6 bg-[#0A1628]">
-                  <div className="mb-8">
+                <div className="rounded-[calc(1.4rem-1px)] p-4 sm:p-5 md:p-6 bg-[#0A1628]">
+                  <div className="mb-6 md:mb-8">
                     <h3 className="text-base font-bold text-white uppercase tracking-wider">Card Management</h3>
                     <p className="text-xs text-gray-400">Manage debit and credit cards.</p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 justify-items-center">
                     
                     <div className="w-full max-w-[360px] stagger-1">
                       <div className="p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.06] to-transparent overflow-hidden">
@@ -838,22 +840,22 @@ export default function App() {
             <div className="space-y-8">
               
               <div className="p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] overflow-hidden">
-                <div className="rounded-[calc(1.4rem-1px)] p-8 bg-[#0A1628] max-w-4xl mx-auto space-y-8">
-                  
-                  <div className="flex justify-between items-start border-b border-white/10 pb-6">
+                  <div className="rounded-[calc(1.4rem-1px)] p-4 sm:p-6 md:p-8 bg-[#0A1628] max-w-4xl mx-auto space-y-6 md:space-y-8">
+                    
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 border-b border-white/10 pb-6">
                     <div>
                       <h2 className="text-lg font-black text-white uppercase tracking-wider">WealthGlobalFinance Group</h2>
                       <p className="text-xs text-gray-500 font-mono">Statement Period: Jul 01, 2025 — Jun 27, 2026</p>
                       <p className="text-xs text-gray-500">Issued: 2026-06-27</p>
                     </div>
-                    <div className="text-right">
+                    <div className="sm:text-right">
                       <span className="text-xs font-bold text-[#C9A84C] uppercase tracking-widest block mb-1">Official Document</span>
                       <p className="text-xs text-gray-400">Beneficiary: EDMUND BECKER</p>
                       <p className="text-xs text-gray-400">Account: AFG-1768472-5959</p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 font-mono">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 font-mono">
                     {/* Starting Balance - Blue theme */}
                     <div className="relative rounded-2xl overflow-hidden stagger-1">
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-blue-500/5 to-transparent" />
@@ -1062,7 +1064,7 @@ export default function App() {
                                   {n.date}
                                 </span>
                               </div>
-                              <p className="text-xs text-gray-300 leading-relaxed whitespace-pre-line">
+                              <p className="text-xs text-gray-300 leading-relaxed whitespace-pre-line break-words">
                                 {n.message}
                               </p>
                             </div>

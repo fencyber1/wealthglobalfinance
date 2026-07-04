@@ -82,7 +82,7 @@ export default function DebtsPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] overflow-hidden">
-        <div className="rounded-[calc(1.4rem-1px)] p-6 bg-[#0A1628]">
+        <div className="rounded-[calc(1.4rem-1px)] p-4 sm:p-5 md:p-6 bg-[#0A1628]">
           {selectedDebt ? (
             <div className="flex items-center gap-3 mb-4">
               <button onClick={() => setSelectedDebtId(null)} className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition">
@@ -106,15 +106,15 @@ export default function DebtsPage() {
           )}
 
           {!selectedDebt && (
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="p-[1px] rounded-xl bg-gradient-to-br from-amber-500/30 via-amber-600/10 to-transparent overflow-hidden">
-                <div className="rounded-[calc(0.75rem-1px)] p-4 bg-gradient-to-br from-[#0A1628] to-[#1a1508] h-full flex flex-col gap-3">
+                <div className="rounded-[calc(0.75rem-1px)] p-3 sm:p-4 bg-gradient-to-br from-[#0A1628] to-[#1a1508] h-full flex flex-col gap-3">
                   <div className="flex items-center gap-2">
                     <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20"><DollarSign className="w-3.5 h-3.5 text-amber-400" /></div>
                     <span className="text-[10px] uppercase tracking-wider text-amber-400/60 font-semibold">Total Debt</span>
                   </div>
                   <div className="border-t border-amber-500/10 pt-3">
-                    <p className="text-2xl font-bold text-amber-400 font-mono leading-none">${formatCurrency(totalDebt)}</p>
+                    <p className="text-xl sm:text-2xl font-bold text-amber-400 font-mono leading-none truncate">${formatCurrency(totalDebt)}</p>
                   </div>
                   <div className="flex items-center justify-between border-t border-amber-500/10 pt-2 mt-auto">
                     <span className="text-[10px] text-gray-500">{debts.length} total accounts</span>
@@ -123,13 +123,13 @@ export default function DebtsPage() {
                 </div>
               </div>
               <div className="p-[1px] rounded-xl bg-gradient-to-br from-violet-500/30 via-violet-600/10 to-transparent overflow-hidden">
-                <div className="rounded-[calc(0.75rem-1px)] p-4 bg-gradient-to-br from-[#0A1628] to-[#12081a] h-full flex flex-col gap-3">
+                <div className="rounded-[calc(0.75rem-1px)] p-3 sm:p-4 bg-gradient-to-br from-[#0A1628] to-[#12081a] h-full flex flex-col gap-3">
                   <div className="flex items-center gap-2">
                     <div className="p-1.5 rounded-lg bg-violet-500/10 border border-violet-500/20"><TrendingDown className="w-3.5 h-3.5 text-violet-400" /></div>
                     <span className="text-[10px] uppercase tracking-wider text-violet-400/60 font-semibold">Min. Payment</span>
                   </div>
                   <div className="border-t border-violet-500/10 pt-3">
-                    <p className="text-2xl font-bold text-violet-400 font-mono leading-none">${formatCurrency(totalMinimum)}</p>
+                    <p className="text-xl sm:text-2xl font-bold text-violet-400 font-mono leading-none truncate">${formatCurrency(totalMinimum)}</p>
                   </div>
                   <div className="flex items-center justify-between border-t border-violet-500/10 pt-2 mt-auto">
                     <span className="text-[10px] text-gray-500">required monthly</span>
@@ -138,13 +138,13 @@ export default function DebtsPage() {
                 </div>
               </div>
               <div className="p-[1px] rounded-xl bg-gradient-to-br from-emerald-500/30 via-emerald-600/10 to-transparent overflow-hidden">
-                <div className="rounded-[calc(0.75rem-1px)] p-4 bg-gradient-to-br from-[#0A1628] to-[#081a10] h-full flex flex-col gap-3">
+                <div className="rounded-[calc(0.75rem-1px)] p-3 sm:p-4 bg-gradient-to-br from-[#0A1628] to-[#081a10] h-full flex flex-col gap-3">
                   <div className="flex items-center gap-2">
                     <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20"><PieChart className="w-3.5 h-3.5 text-emerald-400" /></div>
                     <span className="text-[10px] uppercase tracking-wider text-emerald-400/60 font-semibold">Active</span>
                   </div>
                   <div className="border-t border-emerald-500/10 pt-3">
-                    <p className="text-2xl font-bold text-emerald-400 font-mono leading-none">{debts.filter(d => d.status === 'active').length}</p>
+                    <p className="text-xl sm:text-2xl font-bold text-emerald-400 font-mono leading-none">{debts.filter(d => d.status === 'active').length}</p>
                   </div>
                   <div className="flex items-center justify-between border-t border-emerald-500/10 pt-2 mt-auto">
                     <span className="text-[10px] text-gray-500">{debts.filter(d => d.status === 'paid').length} paid off</span>
@@ -174,14 +174,14 @@ export default function DebtsPage() {
                   />
                   {search && <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white"><X className="w-3 h-3" /></button>}
                 </div>
-                <select value={filterType} onChange={e => setFilterType(e.target.value as DebtType | 'all')} className="py-2 px-3 bg-[#0A1628]/60 border border-white/[0.08] rounded-lg text-xs text-[#F0F0F0] outline-none focus:border-amber-500/40">
+                <select value={filterType} onChange={e => setFilterType(e.target.value as DebtType | 'all')} className="py-2 px-3 bg-[#0A1628]/60 border border-white/[0.08] rounded-lg text-xs text-[#F0F0F0] outline-none focus:border-amber-500/40 w-full sm:w-auto">
                   <option value="all">All Types</option>
                   <option value="credit-card">Credit Card</option>
                   <option value="loan">Loan</option>
                   <option value="mortgage">Mortgage</option>
                   <option value="other">Other</option>
                 </select>
-                <select value={filterStatus} onChange={e => setFilterStatus(e.target.value as DebtStatus | 'all')} className="py-2 px-3 bg-[#0A1628]/60 border border-white/[0.08] rounded-lg text-xs text-[#F0F0F0] outline-none focus:border-amber-500/40">
+                <select value={filterStatus} onChange={e => setFilterStatus(e.target.value as DebtStatus | 'all')} className="py-2 px-3 bg-[#0A1628]/60 border border-white/[0.08] rounded-lg text-xs text-[#F0F0F0] outline-none focus:border-amber-500/40 w-full sm:w-auto">
                   <option value="all">All Status</option>
                   <option value="active">Active</option>
                   <option value="paid">Paid</option>
@@ -193,7 +193,7 @@ export default function DebtsPage() {
 
           {/* Table */}
           <div className="p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] overflow-hidden">
-            <div className="rounded-[calc(1.4rem-1px)] p-6 bg-[#0A1628]">
+            <div className="rounded-[calc(1.4rem-1px)] p-4 sm:p-5 md:p-6 bg-[#0A1628]">
               {sorted.length === 0 ? (
                 <div className="py-16 text-center">
                   <PieChart className="w-12 h-12 text-gray-600 mx-auto mb-3" />
@@ -202,7 +202,7 @@ export default function DebtsPage() {
                 </div>
               ) : (
                 <div className="overflow-x-auto no-scrollbar">
-                  <table className="w-full text-left border-collapse">
+                  <table className="w-full text-left border-collapse min-w-[640px]">
                     <thead>
                       <tr className="border-b border-white/5 text-[10px] uppercase tracking-wider text-gray-400">
                         <th className="py-2.5 pr-2 font-semibold cursor-pointer hover:text-white select-none" onClick={() => toggleSort('creditorName')}>
