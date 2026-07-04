@@ -1146,8 +1146,7 @@ export default function LandingPage({
       </RevealSection>
 
       {/* FAQ Section */}
-      <div id="faq">
-      <RevealSection className="relative py-20 px-6 md:px-12 border-b border-white/5">
+      <section id="faq" className="relative py-20 px-6 md:px-12 border-b border-white/5">
         <div className="absolute inset-0 bg-[#0A1628]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(201,168,76,0.04)_0%,transparent_70%)]" />
         <div className="relative z-10 max-w-4xl mx-auto space-y-12">
@@ -1198,8 +1197,7 @@ export default function LandingPage({
             })}
           </div>
         </div>
-      </RevealSection>
-      </div>
+      </section>
 
       {/* Financial News section */}
       <RevealSection className="py-20 px-6 md:px-12 border-b border-white/5">
@@ -1390,10 +1388,10 @@ export default function LandingPage({
             style={{ background: 'linear-gradient(135deg, #1a1028 0%, #0d1117 50%, #161b22 100%)' }}
           >
             {/* Main Card - Full screen */}
-            <div className="w-full h-full flex flex-col lg:flex-row rounded-none overflow-hidden" style={{ boxShadow: '0 25px 80px -15px rgba(0,0,0,0.8)' }}>
+            <div className="w-full h-full flex flex-col md:flex-row rounded-none overflow-hidden" style={{ boxShadow: '0 25px 80px -15px rgba(0,0,0,0.8)' }}>
               
               {/* Left Panel - Image & Branding */}
-              <div className="hidden md:flex md:w-1/2 lg:flex-1 relative overflow-hidden">
+              <div className="flex w-full md:w-1/2 lg:flex-1 h-[200px] md:h-auto relative overflow-hidden shrink-0">
                 {/* Background Images with transition */}
                 {loginSlides.map((slide, idx) => (
                   <div 
@@ -1413,21 +1411,21 @@ export default function LandingPage({
                 {/* Close button */}
                 <button 
                   onClick={closeSignIn}
-                  className="absolute top-4 right-4 z-50 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white/80 hover:text-white text-xs font-medium transition-all duration-300 flex items-center gap-1.5 border border-white/10"
+                  className="hidden md:flex absolute top-4 right-4 z-50 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white/80 hover:text-white text-xs font-medium transition-all duration-300 items-center gap-1.5 border border-white/10"
                 >
                   Back to website <ArrowRight className="w-3 h-3" />
                 </button>
 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col justify-between h-full p-8">
+                <div className="relative z-10 flex flex-col justify-between h-full p-4 md:p-8">
                   {/* Logo */}
-                  <div className="flex items-center gap-2.5">
+                  <div className="hidden md:flex items-center gap-2.5">
                     <Logo size={32} />
                     <span className="text-white font-bold text-lg tracking-tight">WGF</span>
                   </div>
 
                   {/* Bottom Text */}
-                  <div>
+                  <div className="md:mt-auto mt-auto">
                     <AnimatePresence mode="wait">
                       <motion.h2 
                         key={loginSlideIndex}
@@ -1435,7 +1433,7 @@ export default function LandingPage({
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.5 }}
-                        className="text-2xl xl:text-3xl font-bold text-white leading-tight mb-2"
+                        className="text-lg md:text-2xl xl:text-3xl font-bold text-white leading-tight mb-2"
                       >
                         {loginSlides[loginSlideIndex].text.split(',').map((part, i) => (
                           <React.Fragment key={i}>
@@ -1462,7 +1460,7 @@ export default function LandingPage({
               </div>
 
               {/* Right Panel - Form */}
-              <div className="w-full lg:w-1/2 flex-1 bg-[#1c1f2e] flex flex-col p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-y-auto min-h-0">
+              <div className="flex-1 md:w-1/2 bg-[#1c1f2e] flex flex-col p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-y-auto min-h-0">
                 {/* Mobile Back button */}
                 <button 
                   onClick={closeSignIn}
