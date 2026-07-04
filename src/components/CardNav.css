@@ -85,15 +85,23 @@
 .card-nav-cta-button {
   border: none;
   border-radius: 0.9rem;
-  padding: 0 1.25rem;
+  padding: 0 0.75rem;
   height: 100%;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
+}
+
+@media (min-width: 769px) {
+  .card-nav-cta-button {
+    padding: 0 1.25rem;
+    font-size: 0.75rem;
+  }
 }
 
 .card-nav-cta-button:hover {
@@ -172,6 +180,10 @@
   .card-nav-container {
     width: 95%;
     padding: 0 0.5rem;
+  }
+
+  .card-nav {
+    overflow: visible;
   }
 
   .card-nav-top {

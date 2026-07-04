@@ -57,10 +57,11 @@ function RevealSection({ children, className = '' }: { children: React.ReactNode
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setRevealed(true); obs.disconnect(); } },
-      { threshold: 0.15 }
+      { threshold: 0.05 }
     );
     obs.observe(el);
-    return () => obs.disconnect();
+    const fallback = setTimeout(() => setRevealed(true), 2000);
+    return () => { obs.disconnect(); clearTimeout(fallback); };
   }, []);
   return (
     <div
@@ -489,8 +490,8 @@ export default function LandingPage({
             }
           ]}
           rightActions={
-            <div className="flex items-center gap-1.5 md:gap-2">
-              <button
+            <div className="flex items-center gap-1.5 md:gap-4">
+              <button 
                 onClick={() => updateSetting('theme', settings.theme === 'light' ? 'dark' : 'light')}
                 className="p-1.5 md:p-2 text-gray-400 hover:text-white rounded-full hover:bg-white/5 transition border border-white/10 bg-white/5 flex items-center justify-center cursor-pointer"
                 title={`Switch to ${settings.theme === 'light' ? 'dark' : 'light'} mode`}
@@ -503,7 +504,7 @@ export default function LandingPage({
               </button>
               <button 
                 onClick={openSignIn}
-                className="px-2.5 py-1.5 md:px-4 md:py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer"
+                className="hidden sm:flex px-2.5 py-1.5 md:px-4 md:py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl text-xs font-bold transition items-center gap-1 cursor-pointer"
               >
                 <span>Sign In</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#C9A84C]" />
@@ -1381,14 +1382,14 @@ export default function LandingPage({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed inset-0 z-50 flex items-center justify-center"
+            className="fixed inset-0 z-[100] flex items-center justify-center"
             style={{ background: 'linear-gradient(135deg, #1a1028 0%, #0d1117 50%, #161b22 100%)' }}
           >
             {/* Main Card - Full screen */}
-            <div className="w-full h-full flex rounded-none overflow-hidden" style={{ boxShadow: '0 25px 80px -15px rgba(0,0,0,0.8)' }}>
+            <div className="w-full h-full flex flex-col lg:flex-row rounded-none overflow-hidden" style={{ boxShadow: '0 25px 80px -15px rgba(0,0,0,0.8)' }}>
               
               {/* Left Panel - Image & Branding */}
-              <div className="hidden lg:flex flex-1 relative overflow-hidden">
+              <div className="hidden md:flex md:w-1/2 lg:flex-1 relative overflow-hidden">
                 {/* Background Images with transition */}
                 {loginSlides.map((slide, idx) => (
                   <div 
@@ -1457,7 +1458,15 @@ export default function LandingPage({
               </div>
 
               {/* Right Panel - Form */}
-              <div className="flex-1 bg-[#1c1f2e] flex items-center justify-center p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-y-auto">
+              <div className="w-full lg:w-1/2 flex-1 bg-[#1c1f2e] flex flex-col p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-y-auto min-h-0">
+                {/* Mobile Back button */}
+                <button 
+                  onClick={closeSignIn}
+                  className="absolute top-4 left-4 z-50 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-white/50 hover:text-white text-xs font-medium transition-all flex items-center gap-1.5 lg:hidden"
+                >
+                  <ArrowRight className="w-3 h-3 rotate-180" /> Back
+                </button>
+
                 {/* Mobile Close */}
                 <button 
                   onClick={closeSignIn}
@@ -1466,6 +1475,7 @@ export default function LandingPage({
                   <X className="w-4 h-4" />
                 </button>
 
+                <div className="flex-1 flex items-center justify-center">
                 <div className="w-full max-w-[400px]">
                   {/* Header */}
                   <div className="mb-6">
@@ -1562,8 +1572,10 @@ export default function LandingPage({
                         <input type="checkbox" checked={agreeToTerms}
                           onChange={(e) => setAgreeToTerms(e.target.checked)}
                           className="sr-only peer mt-0.5" />
-                        <span className="w-4 h-4 mt-0.5 border border-white/20 rounded bg-[#252838] peer-checked:bg-[#7c5bf5] peer-checked:border-[#7c5bf5] transition-all flex items-center justify-center shrink-0">
-                          <svg className="w-2.5 h-2.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+                        <span className="w-4 h-4 mt-0.5 border border-white/20 rounded bg-[#252838] peer-checked:bg-[#7c5bf5] peer-checked:border-[#7c5bf5] transition-all flex items-center justify-center shrink-0 overflow-hidden">
+                          <span className={`text-white transition-opacity ${agreeToTerms ? 'opacity-100' : 'opacity-0'}`}>
+                            <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+                          </span>
                         </span>
                         <span className="group-hover:text-white/70 transition-colors">
                           I agree to the <span className="text-[#7c5bf5] hover:underline">Terms & Conditions</span>
@@ -1672,6 +1684,7 @@ export default function LandingPage({
                     </motion.form>
                   )}
                   </AnimatePresence>
+                </div>
                 </div>
               </div>
             </div>
