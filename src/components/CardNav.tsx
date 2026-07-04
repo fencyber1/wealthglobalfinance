@@ -72,7 +72,6 @@ export default function CardNav({
         contentEl.style.position = 'static';
         contentEl.style.height = 'auto';
 
-        // Force reflow
         contentEl.offsetHeight;
 
         const topBar = 60;
@@ -173,7 +172,6 @@ export default function CardNav({
   };
 
   const handleLinkClick = (lnk: CardNavLink) => {
-    // Close the navigation menu upon link interaction
     const tl = tlRef.current;
     if (tl && isExpanded) {
       setIsHamburgerOpen(false);
@@ -199,8 +197,8 @@ export default function CardNav({
         style={baseColor ? { backgroundColor: baseColor } : undefined}
       >
         <div className="card-nav-top">
-          {/* Hamburger Menu & Brand block */}
-          <div className="flex items-center gap-1.5 md:gap-3">
+          {/* Left: Hamburger + Logo */}
+          <div className="card-nav-left">
             <div
               className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
               onClick={toggleMenu}
@@ -229,8 +227,8 @@ export default function CardNav({
             </div>
           </div>
 
-          {/* Right Action Area */}
-          <div className="flex items-center gap-2 md:gap-4 card-nav-cta-area">
+          {/* Right: Theme toggle + Sign In + New Account CTA */}
+          <div className="card-nav-cta-area">
             {rightActions}
 
             {onCtaClick && (

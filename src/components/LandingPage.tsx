@@ -490,10 +490,10 @@ export default function LandingPage({
             }
           ]}
           rightActions={
-            <div className="flex items-center gap-1.5 md:gap-4">
+            <>
               <button 
                 onClick={() => updateSetting('theme', settings.theme === 'light' ? 'dark' : 'light')}
-                className="p-1.5 md:p-2 text-gray-400 hover:text-white rounded-full hover:bg-white/5 transition border border-white/10 bg-white/5 flex items-center justify-center cursor-pointer"
+                className="card-nav-icon-btn"
                 title={`Switch to ${settings.theme === 'light' ? 'dark' : 'light'} mode`}
               >
                 {settings.theme === 'light' ? (
@@ -504,12 +504,12 @@ export default function LandingPage({
               </button>
               <button 
                 onClick={openSignIn}
-                className="hidden sm:flex px-2.5 py-1.5 md:px-4 md:py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl text-xs font-bold transition items-center gap-1 cursor-pointer"
+                className="card-nav-signin-btn"
               >
                 <span>Sign In</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#C9A84C]" />
+                <ArrowRight className="w-3 h-3 text-[#C9A84C]" />
               </button>
-            </div>
+            </>
           }
           ctaText="New Account"
           onCtaClick={openSignIn}
